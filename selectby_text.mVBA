@@ -111,28 +111,3 @@ Sub change_text()
 
     CommandState.StartDefaultCommand
 End Sub
-Sub Macro1()
-    Dim startPoint As Point3d
-    Dim point As Point3d, point2 As Point3d
-    Dim lngTemp As Long
-
-'   Set a variable associated with a dialog box
-
-    SetCExpressionValue "selectorGlobals.typemask[0]", 5073, "SELECTBY"
-
-    SetCExpressionValue "selectorGlobals.typemask[1]", -1223, "SELECTBY"
-
-    SetCExpressionValue "selectorGlobals.typemask[2]", -30, "SELECTBY"
-
-    SetCExpressionValue "selectorGlobals.typemask[3]", -1, "SELECTBY"
-
-    SetCExpressionValue "selectorGlobals.typemask[4]", -1, "SELECTBY"
-
-    SetCExpressionValue "selectorGlobals.typemask[5]", -8257, "SELECTBY"
-
-    SetCExpressionValue "selectorGlobals.typemask[6]", -257, "SELECTBY"
-
-    SetCExpressionValue "selectorGlobals.typemask[7]", -1, "SELECTBY"
-
-    CommandState.StartDefaultCommand
-End Sub
