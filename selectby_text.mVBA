@@ -1,0 +1,93 @@
+Sub Macro1()
+    Dim startPoint As Point3d
+    Dim point As Point3d, point2 As Point3d
+    Dim lngTemp As Long
+
+'   Start a command
+    CadInputQueue.SendCommand "MDL SILENTLOAD SELECTBY dialog"
+
+    CadInputQueue.SendCommand "SELECTBY SETTINGS TEXT"
+    
+    CadInputQueue.SendCommand "SELECTBY LEVEL map index sheet name or number"
+
+'   Set a variable associated with a dialog box
+    SetCExpressionValue "selectorGlobals.textfontButton", -1, "SELECTBY"
+
+    SetCExpressionValue "selectorGlobals.textheightButton", -1, "SELECTBY"
+
+    SetCExpressionValue "selectorGlobals.textwidthButton", -1, "SELECTBY"
+
+    SetCExpressionValue "selectorGlobals.textjustButton", -1, "SELECTBY"
+
+    SetCExpressionValue "selectorGlobals.colorButton", -1, "SELECTBY"
+
+    SetCExpressionValue "selectorGlobals.styleButton", -1, "SELECTBY"
+    
+    SetCExpressionValue "selectorGlobals.weightButton", -1, "SELECTBY"
+    
+    SetCExpressionValue "selectorGlobals.textjustButton", -1, "SELECTBY"
+    
+    SetCExpressionValue "selectorGlobals.textheight", (ActiveModelReference.UORsPerMasterUnit * 101.25), "SELECTBY"
+  SetCExpressionValue "selectorGlobals.textwidth", (ActiveModelReference.UORsPerMasterUnit * 101.25), "SELECTBY"
+
+    SetCExpressionValue "selectorGlobals.color", 64, "SELECTBY"
+
+
+    SetCExpressionValue "selectorGlobals.style", 0, "SELECTBY"
+
+
+    SetCExpressionValue "selectorGlobals.weight", 0, "SELECTBY"
+
+
+    SetCExpressionValue "selectorGlobals.textjust", 7, "SELECTBY"
+
+    SetCExpressionValue "selectorGlobals.textstringButton", 0, "SELECTBY"
+
+    CadInputQueue.SendCommand "SELECTBY EXECUTE"
+
+    CadInputQueue.SendCommand "Change Attributes"
+
+'   Send a keyin that can be a command string
+    CadInputQueue.SendKeyin "CHANGE ATTRIBUTES USEACTIVE OFF"
+
+    CadInputQueue.SendKeyin "CHANGE ATTRIBUTES DISABLE LEVEL"
+
+    CadInputQueue.SendKeyin "CHANGE ATTRIBUTES DISABLE LINESTYLE"
+
+    CadInputQueue.SendKeyin "CHANGE ATTRIBUTES DISABLE WEIGHT"
+
+    CadInputQueue.SendKeyin "CHANGE ATTRIBUTES DISABLE TRANSPARENCY"
+
+    CadInputQueue.SendKeyin "CHANGE ATTRIBUTES DISABLE PRIORITY"
+    
+    CadInputQueue.SendKeyin "CHANGE ATTRIBUTES DISABLE TEMPLATE"
+
+    CadInputQueue.SendKeyin "CHANGE ATTRIBUTES DISABLE ELEMENTCLASS"
+    
+    CadInputQueue.SendKeyin "CHANGE ATTRIBUTES ENABLE COLOR"
+
+    CadInputQueue.SendKeyin "CHANGE ATTRIBUTES SET COLOR ""1"""
+
+    CadInputQueue.SendKeyin "CHANGE ATTRIBUTES MAKECOPY OFF"
+
+    CadInputQueue.SendKeyin "CHANGE ATTRIBUTES ENTIREELEMENT OFF"
+
+
+'   Coordinates are in master units
+    startPoint.X = 450532.317583979
+    startPoint.Y = 6652249.94265865
+    startPoint.Z = 0#
+
+'   Send a data point to the current command
+    point.X = startPoint.X
+    point.Y = startPoint.Y
+    point.Z = startPoint.Z
+    CadInputQueue.SendDataPoint point, 1
+
+    point.X = startPoint.X - 10.1481533773476
+    point.Y = startPoint.Y + 172.603054578416
+    point.Z = startPoint.Z
+    CadInputQueue.SendDataPoint point, 1
+
+    CommandState.StartDefaultCommand
+End Sub
